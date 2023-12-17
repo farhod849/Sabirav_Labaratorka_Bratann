@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ModelkaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Spravochnaya">
+    <Key>
+      <PropertyRef Name="IdReys" />
+    </Key>
+    <Property Name="IdReys" Type="int" Nullable="false" />
+    <Property Name="NameReys" Type="nvarchar" MaxLength="30" />
+    <Property Name="KolVoSeat" Type="int" />
+  </EntityType>
+  <EntityType Name="Ychetnaya">
+    <Key>
+      <PropertyRef Name="IdZapis" />
+    </Key>
+    <Property Name="IdZapis" Type="int" Nullable="false" />
+    <Property Name="IdReysa" Type="int" Nullable="false" />
+    <Property Name="DateVilet" Type="date" />
+    <Property Name="PriceTicket" Type="int" />
+    <Property Name="KolVoSells" Type="int" />
+  </EntityType>
+  <Association Name="FK__Ychetnaya__IdRey__38996AB5">
+    <End Role="Spravochnaya" Type="Self.Spravochnaya" Multiplicity="1" />
+    <End Role="Ychetnaya" Type="Self.Ychetnaya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spravochnaya">
+        <PropertyRef Name="IdReys" />
+      </Principal>
+      <Dependent Role="Ychetnaya">
+        <PropertyRef Name="IdReysa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ModelkaModelContainer">
+    <EntitySet Name="Spravochnaya" EntityType="Self.Spravochnaya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ychetnaya" EntityType="Self.Ychetnaya" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Ychetnaya__IdRey__38996AB5" Association="Self.FK__Ychetnaya__IdRey__38996AB5">
+      <End Role="Spravochnaya" EntitySet="Spravochnaya" />
+      <End Role="Ychetnaya" EntitySet="Ychetnaya" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

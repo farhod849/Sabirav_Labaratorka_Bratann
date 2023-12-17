@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ModelkaModelContainer" CdmEntityContainer="ModelkaEntities">
+    <EntitySetMapping Name="Spravochnaya">
+      <EntityTypeMapping TypeName="ModelkaModel.Spravochnaya">
+        <MappingFragment StoreEntitySet="Spravochnaya">
+          <ScalarProperty Name="IdReys" ColumnName="IdReys" />
+          <ScalarProperty Name="NameReys" ColumnName="NameReys" />
+          <ScalarProperty Name="KolVoSeat" ColumnName="KolVoSeat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ychetnaya">
+      <EntityTypeMapping TypeName="ModelkaModel.Ychetnaya">
+        <MappingFragment StoreEntitySet="Ychetnaya">
+          <ScalarProperty Name="IdZapis" ColumnName="IdZapis" />
+          <ScalarProperty Name="IdReysa" ColumnName="IdReysa" />
+          <ScalarProperty Name="DateVilet" ColumnName="DateVilet" />
+          <ScalarProperty Name="PriceTicket" ColumnName="PriceTicket" />
+          <ScalarProperty Name="KolVoSells" ColumnName="KolVoSells" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

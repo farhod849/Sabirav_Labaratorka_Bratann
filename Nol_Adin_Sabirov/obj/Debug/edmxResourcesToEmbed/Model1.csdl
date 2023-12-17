@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelkaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Spravochnaya">
+    <Key>
+      <PropertyRef Name="IdReys" />
+    </Key>
+    <Property Name="IdReys" Type="Int32" Nullable="false" />
+    <Property Name="NameReys" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="KolVoSeat" Type="Int32" />
+    <NavigationProperty Name="Ychetnaya" Relationship="Self.FK__Ychetnaya__IdRey__38996AB5" FromRole="Spravochnaya" ToRole="Ychetnaya" />
+  </EntityType>
+  <EntityType Name="Ychetnaya">
+    <Key>
+      <PropertyRef Name="IdZapis" />
+    </Key>
+    <Property Name="IdZapis" Type="Int32" Nullable="false" />
+    <Property Name="IdReysa" Type="Int32" Nullable="false" />
+    <Property Name="DateVilet" Type="DateTime" Precision="0" />
+    <Property Name="PriceTicket" Type="Int32" />
+    <Property Name="KolVoSells" Type="Int32" />
+    <NavigationProperty Name="Spravochnaya" Relationship="Self.FK__Ychetnaya__IdRey__38996AB5" FromRole="Ychetnaya" ToRole="Spravochnaya" />
+  </EntityType>
+  <Association Name="FK__Ychetnaya__IdRey__38996AB5">
+    <End Role="Spravochnaya" Type="Self.Spravochnaya" Multiplicity="1" />
+    <End Role="Ychetnaya" Type="Self.Ychetnaya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spravochnaya">
+        <PropertyRef Name="IdReys" />
+      </Principal>
+      <Dependent Role="Ychetnaya">
+        <PropertyRef Name="IdReysa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelkaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Spravochnaya" EntityType="Self.Spravochnaya" />
+    <EntitySet Name="Ychetnaya" EntityType="Self.Ychetnaya" />
+    <AssociationSet Name="FK__Ychetnaya__IdRey__38996AB5" Association="Self.FK__Ychetnaya__IdRey__38996AB5">
+      <End Role="Spravochnaya" EntitySet="Spravochnaya" />
+      <End Role="Ychetnaya" EntitySet="Ychetnaya" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

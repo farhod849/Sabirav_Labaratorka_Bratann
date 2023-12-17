@@ -1,0 +1,15 @@
+﻿<Window x:Class="Nol_Adin_Sabirov.Pages.CustomMsgBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nol_Adin_Sabirov.Pages"
+        mc:Ignorable="d"
+        Title="CustomMsgBox" Height="150" Width="200" MaxHeight="150" MaxWidth="200" MinHeight="150" MinWidth="200">
+    <Grid>
+        <StackPanel>
+            <Button x:Name="Excel" Height="30" Width="150" Background="White" Content="Отчет Excel" Margin="0,20,0,0" Click="Excel_Click"/>
+            <Button x:Name="PDF" Height="30" Width="150" Background="White" Content="Отчет PDF" Margin="10" Click="PDF_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Sabriov_BDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Spravochnaya">
+          <Key>
+            <PropertyRef Name="IdReys" />
+          </Key>
+          <Property Name="IdReys" Type="int" Nullable="false" />
+          <Property Name="NameReys" Type="nvarchar" MaxLength="30" />
+          <Property Name="KolVoSeat" Type="int" />
+        </EntityType>
+        <EntityType Name="Ychetnaya">
+          <Key>
+            <PropertyRef Name="IdZapis" />
+          </Key>
+          <Property Name="IdZapis" Type="int" Nullable="false" />
+          <Property Name="IdReysa" Type="int" Nullable="false" />
+          <Property Name="DateVilet" Type="date" />
+          <Property Name="PriceTicket" Type="int" />
+          <Property Name="KolVoSells" Type="int" />
+        </EntityType>
+        <Association Name="FK__Ychetnaya__IdRey__38996AB5">
+          <End Role="Spravochnaya" Type="Self.Spravochnaya" Multiplicity="1" />
+          <End Role="Ychetnaya" Type="Self.Ychetnaya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spravochnaya">
+              <PropertyRef Name="IdReys" />
+            </Principal>
+            <Dependent Role="Ychetnaya">
+              <PropertyRef Name="IdReysa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Sabriov_BDModelContainer">
+          <EntitySet Name="Spravochnaya" EntityType="Self.Spravochnaya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ychetnaya" EntityType="Self.Ychetnaya" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Ychetnaya__IdRey__38996AB5" Association="Self.FK__Ychetnaya__IdRey__38996AB5">
+            <End Role="Spravochnaya" EntitySet="Spravochnaya" />
+            <End Role="Ychetnaya" EntitySet="Ychetnaya" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Sabriov_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Spravochnaya">
+          <Key>
+            <PropertyRef Name="IdReys" />
+          </Key>
+          <Property Name="IdReys" Type="Int32" Nullable="false" />
+          <Property Name="NameReys" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="KolVoSeat" Type="Int32" />
+          <NavigationProperty Name="Ychetnaya" Relationship="Self.FK__Ychetnaya__IdRey__38996AB5" FromRole="Spravochnaya" ToRole="Ychetnaya" />
+        </EntityType>
+        <EntityType Name="Ychetnaya">
+          <Key>
+            <PropertyRef Name="IdZapis" />
+          </Key>
+          <Property Name="IdZapis" Type="Int32" Nullable="false" />
+          <Property Name="IdReysa" Type="Int32" Nullable="false" />
+          <Property Name="DateVilet" Type="DateTime" Precision="0" />
+          <Property Name="PriceTicket" Type="Int32" />
+          <Property Name="KolVoSells" Type="Int32" />
+          <NavigationProperty Name="Spravochnaya" Relationship="Self.FK__Ychetnaya__IdRey__38996AB5" FromRole="Ychetnaya" ToRole="Spravochnaya" />
+        </EntityType>
+        <Association Name="FK__Ychetnaya__IdRey__38996AB5">
+          <End Role="Spravochnaya" Type="Self.Spravochnaya" Multiplicity="1" />
+          <End Role="Ychetnaya" Type="Self.Ychetnaya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spravochnaya">
+              <PropertyRef Name="IdReys" />
+            </Principal>
+            <Dependent Role="Ychetnaya">
+              <PropertyRef Name="IdReysa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sabriov_BDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Spravochnaya" EntityType="Self.Spravochnaya" />
+          <EntitySet Name="Ychetnaya" EntityType="Self.Ychetnaya" />
+          <AssociationSet Name="FK__Ychetnaya__IdRey__38996AB5" Association="Self.FK__Ychetnaya__IdRey__38996AB5">
+            <End Role="Spravochnaya" EntitySet="Spravochnaya" />
+            <End Role="Ychetnaya" EntitySet="Ychetnaya" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Sabriov_BDModelContainer" CdmEntityContainer="Sabriov_BDEntities">
+          <EntitySetMapping Name="Spravochnaya">
+            <EntityTypeMapping TypeName="Sabriov_BDModel.Spravochnaya">
+              <MappingFragment StoreEntitySet="Spravochnaya">
+                <ScalarProperty Name="IdReys" ColumnName="IdReys" />
+                <ScalarProperty Name="NameReys" ColumnName="NameReys" />
+                <ScalarProperty Name="KolVoSeat" ColumnName="KolVoSeat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ychetnaya">
+            <EntityTypeMapping TypeName="Sabriov_BDModel.Ychetnaya">
+              <MappingFragment StoreEntitySet="Ychetnaya">
+                <ScalarProperty Name="IdZapis" ColumnName="IdZapis" />
+                <ScalarProperty Name="IdReysa" ColumnName="IdReysa" />
+                <ScalarProperty Name="DateVilet" ColumnName="DateVilet" />
+                <ScalarProperty Name="PriceTicket" ColumnName="PriceTicket" />
+                <ScalarProperty Name="KolVoSells" ColumnName="KolVoSells" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
